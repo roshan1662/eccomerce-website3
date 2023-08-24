@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Login</h3>
+   <hr>
+   {% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Message</strong> {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+   <form action="" method="post" novalidate class="shadow-lg p-5">
+    {% csrf_token %}
+    <div class="mb-3">
+     <label for="uname" class="form-label">Username</label>
+     <input type="text" class="form-control" id="uname" aria-describedby="emailHelp" name="username">
+    </div>
+    <div class="mb-3">
+     <label for="exampleInputPassword1" class="form-label">Password</label>
+     <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+    </div>
+    <small><a href="{% url 'password_reset' %}">Forgot Password ?</a></small> <br>
+    <input type="submit" class="btn btn-primary mt-4" value="Login">
+    
+    <!-- <a href="{% url 'password_reset' %}" class="btn btn-primary mt-4" >Forgot Password?</a> -->
+    <div class="text-center text-primary fw-bold"><small>New to ShoppinglyX ? <a href="{% url 'customerregistration' %}"
+       class="text-danger">Create an Account</a> </small></div>
+   </form>
+   
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
