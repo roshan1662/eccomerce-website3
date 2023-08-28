@@ -25,6 +25,9 @@ class CostomerRegistrationForm(UserCreationForm):
 
 
 class costomerform(forms.ModelForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={"class": "form-control"}))
+    password2 = forms.CharField(label='Confirm Password',widget=forms.PasswordInput(attrs={"class": "form-control"}))
+    email = forms.EmailField(label='Email',widget=forms.EmailInput(attrs={"class": "form-control"}))
     class Meta:
         model=Costomer
         fields=['name','locality','city','state','zipcode']
